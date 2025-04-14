@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+
+function MultiCounter() {
+
+  const [contador, setContador] = useState(0);
+
+  useEffect(() => {
+    console.log(`Cambio el contador: ${contador}`);
+
+  }, [contador]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>react-multicounter</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='MultiCounter' style={{ padding: "2rem" }}>
+      <header className='MultiCounter-Header'>
+        <h1>MultiCounter with React</h1>
       </header>
+
+      <div>
+        <h2>Counter: {contador}</h2>
+        <button onClick = {() => setContador(contador + 1)}>Incrementar</button>
+        <button onClick = {() => setContador(contador - 1)}>Decrementar</button>
+        <button onClick = {() => setContador(0)}>Reiniciar</button>
+      </div>
+      
     </div>
   );
 }
 
-export default App;
+export default MultiCounter;
